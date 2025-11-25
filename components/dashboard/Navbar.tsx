@@ -1,14 +1,44 @@
 "use client";
-import { Bell, LogOut, User } from "lucide-react";
+import {
+  Bell,
+  CircleUserRound,
+  LogOut,
+  Search,
+  Settings,
+  SquareChartGantt,
+  SquarePen,
+  Target,
+  User,
+} from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useState } from "react";
+import blankProfilePic from "@/public/blank-profile-pic.jpg";
 
 // Props for DashboardNavbar
 interface DashboardNavbarProps {
   currentPage: string;
   setCurrentPage: (pageName: string) => void;
 }
+
+const navbarSelection = [
+  {
+    name: "Create",
+    icon: <SquarePen />,
+  },
+  {
+    name: "Overview",
+    icon: <SquareChartGantt />,
+  },
+  {
+    name: "Stats",
+    icon: <Target />,
+  },
+  {
+    name: "Search",
+    icon: <Search />,
+  },
+];
 
 const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ currentPage, setCurrentPage }) => {
   const { data: session } = useSession();
@@ -20,44 +50,24 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ currentPage, setCurre
 
   console.log(currentPage);
   return (
-    <nav className="w-full h-fit flex flex-row justify-between items-center m-5">
+    <nav className="w-full h-fit flex flex-row justify-between items-center py-4 px-6">
       {/* Logo */}
       <p>STARTUP_LOGO</p>
 
       {/* Dashboard Selection */}
-      <div className="flex flex-row space-x-10">
-        <button
-          className={`p-2 rounded-lg hover:bg-gray-700 hover:cursor-pointer ${
-            currentPage === "create" ? "bg-gray-700" : ""
-          }`}
-          onClick={() => setCurrentPage("create")}
-        >
-          Create
-        </button>
-        <button
-          className={`p-2 rounded-lg hover:bg-gray-700 hover:cursor-pointer ${
-            currentPage === "overview" ? "bg-gray-700" : ""
-          }`}
-          onClick={() => setCurrentPage("overview")}
-        >
-          Overview
-        </button>
-        <button
-          className={`p-2 rounded-lg hover:bg-gray-700 hover:cursor-pointer ${
-            currentPage === "stats" ? "bg-gray-700" : ""
-          }`}
-          onClick={() => setCurrentPage("stats")}
-        >
-          Stats
-        </button>
-        <button
-          className={`p-2 rounded-lg hover:bg-gray-700 hover:cursor-pointer ${
-            currentPage === "search" ? "bg-gray-700" : ""
-          }`}
-          onClick={() => setCurrentPage("search")}
-        >
-          Search
-        </button>
+      <div className="flex flex-row space-x-10 bg-gray-800 py-2 px-6 rounded-full">
+        {navbarSelection.map((selection, index) => (
+          <button
+            key={index}
+            className={`p-2 rounded-2xl transition-all duration-300 text-gray-400 hover:text-white hover:cursor-pointer flex flex-row gap-2 ${
+              currentPage === selection.name ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setCurrentPage(selection.name)}
+          >
+            {selection.icon}
+            <p className="font-bold">{selection.name}</p>
+          </button>
+        ))}
       </div>
 
       {/* Notification and Profile */}
@@ -70,35 +80,45 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ currentPage, setCurre
         {/* Profile */}
         {/* Profile Button / Icon */}
         <button
-          className="flex flex-row space-x-2 rounded-lg p-2 hover:cursor-pointer hover:bg-gray-700 transition-all duration-100"
+          className="flex flex-row items-center space-x-2 rounded-lg p-2 hover:cursor-pointer"
           onClick={() => setOpenProfileMenu(!openProfileMenu)}
         >
-          <User />
-          <p>{session ? session?.user?.name : "UNKNOWN"}</p>
+          <img
+            src={blankProfilePic.src}
+            alt={blankProfilePic.src}
+            width={30}
+            height={30}
+            className="rounded-full object-cover"
+          />
+          <p className="font-medium text-gray-400 hover:text-white transition-all duration-300 hover:cursor-pointer">
+            {session ? session?.user?.name : "UNKNOWN"}
+          </p>
         </button>
-
-        {/* Dropdown Menu Profile */}
-        {openProfileMenu && (
-          <div
-            className="absolute right-0 w-48 bg-gray-700 rounded-lg shadow-xl overflow-hidden animate-in fade-in origin-top-right border border-gray-600"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="user-menu-button"
-          >
-            <div className="py-1">
-              <button
-                className="flex items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-gray-600 hover:text-red-300 hover:cursor-pointer transition duration-150"
-                onClick={() => {
-                  signOut();
-                }}
-              >
-                <LogOut size={16} className="mr-3" />
-                Sign Out
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+      {/* Dropdown Menu Profile */}
+      {openProfileMenu && (
+        <div className="absolute right-5 top-20 w-48 bg-gray-700 transition-all animate-in fade-in rounded-lg shadow-xl border border-gray-600">
+          <div className="py-1">
+            <button className="flex items-center w-full px-4 py-2 text-sm text-gray-400 hover:text-white hover:cursor-pointer transition duration-300">
+              <CircleUserRound size={16} className="mr-3" />
+              <p>Account</p>
+            </button>
+            <button className="flex items-center w-full px-4 py-2 text-sm text-gray-400 hover:text-white hover:cursor-pointer transition duration-300">
+              <Settings size={16} className="mr-3" />
+              <p>Settings</p>
+            </button>
+            <button
+              className="flex items-center w-full px-4 py-2 text-sm text-red-400 hover:text-red-300 hover:cursor-pointer transition duration-300"
+              onClick={() => {
+                signOut();
+              }}
+            >
+              <LogOut size={16} className="mr-3" />
+              Sign Out
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

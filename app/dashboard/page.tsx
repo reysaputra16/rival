@@ -6,15 +6,15 @@ import { useState } from "react";
 
 const Dashboard: React.FC = () => {
   /* States */
-  const [currentPage, setCurrentPage] = useState("overview");
+  const [currentPage, setCurrentPage] = useState("Overview");
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="max-w-screen min-h-screen flex flex-col">
       {/* Navbar of Dashboard */}
       <DashboardNavbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {/* Pages */}
-      {currentPage === "create" ? <CreatePage /> : currentPage === "search" ? <SearchPage /> : ""}
+      {currentPage === "Create" ? <CreatePage /> : currentPage === "Search" ? <SearchPage /> : ""}
     </div>
   );
 };
