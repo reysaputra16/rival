@@ -10,12 +10,10 @@ const CreateSelectionPage: React.FC<{
   setSubPage: (newSubPage: string) => void;
 }> = ({ subPage, setSubPage }) => {
   return (
-    <div className="p-8 flex flex-col items-center">
+    <div className="h-full p-8 pt-20 flex flex-col items-center justify-center">
       {/* Main title and description */}
-      <h1 className="text-4xl font-extrabold text-white mb-4 flex items-center">
-        <Plus size={36} className="text-cyan-400 mr-3" /> What would you like to create?
-      </h1>
-      <p className="text-xl text-gray-400 mb-12">Select the foundation for your new analysis.</p>
+      <h1 className="text-6xl font-extrabold text-white mb-4 flex items-center">Create your own</h1>
+      <p className="text-xl text-gray-400 mb-12">Select the appropriate option for your sport</p>
 
       {/* Three centered cards */}
       <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 sm:space-x-8 max-w-5xl w-full justify-center">

@@ -50,28 +50,32 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ currentPage, setCurre
 
   console.log(currentPage);
   return (
-    <nav className="w-full h-fit flex flex-row justify-between items-center py-4 px-6">
+    <nav className="w-full h-fit flex flex-row justify-center items-center py-4 px-6">
       {/* Logo */}
-      <p>STARTUP_LOGO</p>
+      <div className="w-1/4">
+        <p>RIVAL_LOGO</p>
+      </div>
 
       {/* Dashboard Selection */}
-      <div className="flex flex-row space-x-10 bg-gray-800 py-2 px-6 rounded-full">
-        {navbarSelection.map((selection, index) => (
-          <button
-            key={index}
-            className={`p-2 rounded-2xl transition-all duration-300 text-gray-400 hover:text-white hover:cursor-pointer flex flex-row gap-2 ${
-              currentPage === selection.name ? "bg-gray-700 text-white" : ""
-            }`}
-            onClick={() => setCurrentPage(selection.name)}
-          >
-            {selection.icon}
-            <p className="font-bold">{selection.name}</p>
-          </button>
-        ))}
+      <div className="w-full flex justify-center">
+        <div className="w-fit flex flex-row space-x-10 bg-gray-800 py-2 px-6 rounded-full">
+          {navbarSelection.map((selection, index) => (
+            <button
+              key={index}
+              className={`p-2 rounded-2xl transition-all duration-300 text-gray-400 hover:text-white hover:cursor-pointer flex flex-row gap-2 ${
+                currentPage === selection.name ? "bg-gray-700 text-white" : ""
+              }`}
+              onClick={() => setCurrentPage(selection.name)}
+            >
+              {selection.icon}
+              <p className="font-bold">{selection.name}</p>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Notification and Profile */}
-      <div className="flex flex-row space-x-5">
+      <div className="w-1/4 flex flex-row justify-end space-x-5">
         {/* Notification */}
         <div className="flex justify-center items-center">
           <Bell />

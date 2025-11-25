@@ -5,12 +5,7 @@ interface CreationCardProps {
   onClick: () => void;
 }
 
-const CreationCard: React.FC<CreationCardProps> = ({
-  title,
-  description,
-  icon,
-  onClick,
-}) => {
+const CreationCard: React.FC<CreationCardProps> = ({ title, description, icon, onClick }) => {
   return (
     <div
       onClick={onClick}
