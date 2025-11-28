@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto, TikTok_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Provider";
+import Navbar from "@/components/Navbar";
 
 const roboto = Roboto({
   weight: "300",
@@ -22,7 +23,10 @@ export default function RootLayout({
     <html lang="en" className={roboto.className}>
       <body>
         <Providers>
-          <div className="bg-gray-900 min-h-screen">{children}</div>
+          <div className="w-full flex flex-col items-center bg-gray-900 min-h-screen">
+            <Navbar />
+            {children}
+          </div>
         </Providers>
       </body>
     </html>

@@ -1,17 +1,22 @@
+"use client";
 import { ChevronDown, LogIn, Medal, Settings } from "lucide-react";
 import React, { useState } from "react";
 
 const Navbar = () => {
   const [searchText, setSearchText] = useState("");
   return (
-    <div className="w-full flex flex-row max-w-7xl p-4 justify-center gap-4 items-center">
-      <h1 className="text-cyan-600 text-2xl font-bold">RIVAL</h1>
+    <nav className="w-full flex flex-row max-w-7xl p-4 justify-center gap-4 items-center">
+      {/* Logo */}
+      <div className="flex px-6">
+        <h1 className="text-cyan-600 text-2xl font-bold">RIVAL</h1>
+      </div>
+
       {/* Search Bar */}
       <div className="flex flex-row w-[50%]">
         <form className="w-full">
           <input
             type="text"
-            placeholder="Search for Teams, Players, Organizations, and etc..."
+            placeholder="Search for Teams, Players, Organizations..."
             onChange={(e) => setSearchText(e.target.value)}
             className="w-full px-4 py-2 placeholder-gray-500 border-b border-gray-500 focus:outline-none"
           />
@@ -40,7 +45,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
