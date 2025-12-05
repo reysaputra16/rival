@@ -1,9 +1,18 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import { Calendar, MapPin } from "lucide-react";
+
+// Components
+import LatestCompetitionLeagueTable from "./components/LatestCompetitionLeagueTable";
+import LatestCompetitionKnockoutRound from "./components/LatestCompetitionKnockoutRound";
+
+// Lucide Icons
+import { Calendar, ChevronLeftCircle, ChevronRightCircle, CircleUser, MapPin } from "lucide-react";
+
+// Next and React Functions
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+
+// Football Logos (to be refined)
 import BorussiaDortmund from "@/public/football_logos/borussia-dortmund.svg";
 import ManchesterCity from "@/public/football_logos/manchester-city.svg";
 import BayerLeverkusen from "@/public/football_logos/bayer-leverkusen.svg";
@@ -11,8 +20,17 @@ import Liverpool from "@/public/football_logos/liverpool.svg";
 import NewcastleUnited from "@/public/football_logos/newcastle-united.svg";
 import LeedsUnited from "@/public/football_logos/leeds-united.svg";
 import Bournemouth from "@/public/football_logos/bournemouth.svg";
+import Arsenal from "@/public/football_logos/arsenal.svg";
+import Chelsea from "@/public/football_logos/chelsea.svg";
+import RealMadrid from "@/public/football_logos/real-madrid.svg";
 import UefaChampionsLeague from "@/public/football_logos/uefa-champions-league.svg";
 import PremierLeague from "@/public/football_logos/premier-league.svg";
+
+// Social Media Logos
+import Instagram from "@/public/social_media_logos/instagram.svg";
+import Facebook from "@/public/social_media_logos/facebook.svg";
+import Tiktok from "@/public/social_media_logos/tiktok.svg";
+import Link from "next/link";
 
 const teamList = [
   {
@@ -70,6 +88,8 @@ const latestMatch = {
   awayLogo: BayerLeverkusen,
   homeScore: 0,
   awayScore: 2,
+  status: "Finished",
+  time: "21:00",
   date: "25.11.2025",
   location: "Etihad Stadium",
 };
@@ -81,6 +101,9 @@ const nextMatch = {
   homeLogo: ManchesterCity,
   awayTeam: "Leeds United",
   awayLogo: LeedsUnited,
+  homeScore: 0,
+  awayScore: 0,
+  status: "Not Started",
   time: "16:00",
   date: "Tomorrow",
   location: "Etihad Stadium",
@@ -124,15 +147,145 @@ const recentMatches = [
   },
 ];
 
+const latestCompetition = {
+  competitionName: "Premier League",
+  competitionLogo: PremierLeague,
+  competitionStages: [
+    {
+      competitionStage: "League Table",
+      teamPosition: {
+        name: "Manchester City",
+        img: ManchesterCity,
+        position: 2,
+        gamesPlayed: 13,
+        wins: 8,
+        draws: 1,
+        losses: 4,
+        goalDiff: 15,
+        points: 25,
+        mostTop: false,
+        mostBottom: false,
+      },
+      upperTeamPosition: {
+        name: "Arsenal",
+        img: Arsenal,
+        position: 1,
+        gamesPlayed: 13,
+        wins: 9,
+        draws: 3,
+        losses: 1,
+        goalDiff: 18,
+        points: 30,
+      },
+      lowerTeamPosition: {
+        name: "Chelsea",
+        img: Chelsea,
+        position: 3,
+        gamesPlayed: 13,
+        wins: 7,
+        draws: 3,
+        losses: 3,
+        goalDiff: 12,
+        points: 24,
+      },
+    },
+    {
+      competitionStage: "Knockout Rounds",
+      matchInfo: {
+        type: "Quarter Final",
+        homeTeam: "Manchester City",
+        awayTeam: "Arsenal",
+        homeLogo: ManchesterCity,
+        awayLogo: Arsenal,
+        homeScore: 3,
+        awayScore: 2,
+        status: "Finished",
+        time: "21:15",
+        date: "01.12.2025",
+        location: "Etihad Stadium",
+      },
+    },
+    {
+      competitionStage: "Knockout Rounds",
+      matchInfo: {
+        type: "Semi Final",
+        homeTeam: "Real Madrid",
+        awayTeam: "Manchester City",
+        homeLogo: RealMadrid,
+        awayLogo: ManchesterCity,
+        homeScore: 0,
+        awayScore: 0,
+        status: "Not Started",
+        time: "21:15",
+        date: "15.12.2025",
+        location: "Santiago Bernabeu",
+      },
+    },
+  ],
+};
+
+const topPerformers = [
+  {
+    name: "Erling Haaland",
+    position: "Forward",
+    award: "Most Goals",
+    amount: 25,
+    metric: "",
+  },
+  {
+    name: "Phil Foden",
+    position: "Midfielder",
+    award: "Most Assists",
+    amount: 12,
+    metric: "",
+  },
+  {
+    name: "Gianluigi Donnarumma",
+    position: "Goalkeeper",
+    award: "Most Clean Sheets",
+    amount: 9,
+    metric: "",
+  },
+  {
+    name: "Jeremy Doku",
+    position: "Midfielder",
+    award: "Most Dribbles Completed",
+    amount: 87,
+    metric: "",
+  },
+  {
+    name: "Bernardo Silva",
+    position: "Midfielder",
+    award: "Most Passes Completed",
+    amount: 192,
+    metric: "",
+  },
+];
+
+const teamProfile = {
+  country: "England",
+  city: "Manchester",
+  description:
+    "Manchester City Football Club is a professional football club based in Manchester, England, that competes in the Premier League, the top flight of English football. Founded in 1880 as St. Mark's (West Gorton), they became Ardwick Association Football Club in 1887 and Manchester City in 1894. The club's home ground is the City of Manchester Stadium in east Manchester, to which they moved in 2003, having played at Maine Road since 1923. Manchester City adopted their sky blue home shirts in 1894, the first season with the current name.[4] The club is one of the most successful in English football, having won ten league titles, seven FA Cups, eight League Cups, seven FA Community Shields, one UEFA Champions League, one European Cup Winners' Cup, one UEFA Super Cup and one FIFA Club World Cup.",
+  instagram: "instagram Link",
+  facebook: "facebook link",
+  tiktok: "tiktok link",
+};
+
 const miniNavbar = ["Overview", "Squad", "Matches", "Videos"];
 
 const TeamPage = () => {
   const pathname = usePathname();
   const id = pathname.slice(1).split("/")[1]; // e.g. "/team/205" -> "team/205" -> "205"
   const team = teamList.find((team) => team.id === id);
+
+  // States
   const [currentSelection, setCurrentSelection] = useState("Overview");
+  const [currentCompetitionStage, setCurrentCompetitionStage] = useState(
+    latestCompetition.competitionStages.length - 1
+  );
   return (
-    <div className="w-full flex flex-col items-center pt-5">
+    <div className="w-full flex flex-col items-center pt-5 mt-5">
       {/* Header and Banner */}
       <div className="relative w-full max-w-7xl h-[250px]">
         {/* Upper Background */}
@@ -172,7 +325,7 @@ const TeamPage = () => {
       </div>
 
       {/* Left and Right Components */}
-      <div className="w-full max-w-7xl flex flex-row px-10 pt-10">
+      <div className="w-full max-w-7xl flex flex-row px-10 pt-10 gap-5">
         {/* Left Component 2/3 */}
         <div className="w-2/3 flex flex-col h-full gap-5">
           {/* Latest and Next Match */}
@@ -339,10 +492,161 @@ const TeamPage = () => {
               ))}
             </div>
           </div>
+
+          {/* Latest Competition */}
+          <div className="w-full h-fit flex flex-col gap-2">
+            <div className="px-2">
+              <h1 className="text-2xl font-bold">Latest Competition</h1>
+            </div>
+            <div className="w-full h-full flex flex-row bg-gray-700 rounded-2xl">
+              {/* Competition Name */}
+              <div className="w-[30%] flex flex-col items-center justify-center gap-4 p-4 border-r-2 border-gray-500">
+                <Image
+                  src={latestCompetition.competitionLogo}
+                  alt="latest-competition-logo"
+                  height={50}
+                  className="object-contain"
+                />
+                <p className="text-lg font-medium">{latestCompetition.competitionName}</p>
+              </div>
+
+              {/* Competition Stage */}
+              <div className="w-full flex flex-row justify-center items-center p-2">
+                <div className="w-[10%]">
+                  {currentCompetitionStage !== 0 ? (
+                    <ChevronLeftCircle
+                      onClick={() => setCurrentCompetitionStage(currentCompetitionStage - 1)}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </div>
+
+                {latestCompetition.competitionStages[currentCompetitionStage].competitionStage ===
+                "League Table" ? (
+                  <LatestCompetitionLeagueTable
+                    {...(latestCompetition.competitionStages[
+                      currentCompetitionStage
+                    ] as CompetitionStageLeagueTableProps)}
+                    competitionLogo={latestCompetition.competitionLogo}
+                    competitionName={latestCompetition.competitionName}
+                  />
+                ) : latestCompetition.competitionStages[currentCompetitionStage]
+                    .competitionStage === "Knockout Rounds" ? (
+                  <LatestCompetitionKnockoutRound
+                    competitionLogo={latestCompetition.competitionLogo}
+                    competitionStage={
+                      latestCompetition.competitionStages[currentCompetitionStage].competitionStage
+                    }
+                    matchInfo={
+                      latestCompetition.competitionStages[currentCompetitionStage]
+                        .matchInfo as CompetitionStageKnockoutRoundMatchProps
+                    }
+                  />
+                ) : (
+                  ""
+                )}
+
+                <div className="w-[10%]">
+                  {currentCompetitionStage !== latestCompetition.competitionStages.length - 1 ? (
+                    <ChevronRightCircle
+                      onClick={() => setCurrentCompetitionStage(currentCompetitionStage + 1)}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Top Performers */}
+          <div className="w-full h-fit flex flex-col gap-2">
+            <div className="px-2">
+              <h1 className="text-2xl font-bold">Top Performers</h1>
+            </div>
+            <div className="w-full h-full flex flex-row justify-center items-center bg-gray-700 rounded-2xl p-6">
+              <div className="grid grid-cols-3 gap-10 w-full">
+                {topPerformers.map((performer, index) => (
+                  <div key={index} className="flex flex-col justify-center items-center gap-2">
+                    <CircleUser size={60} />
+                    <p className="text-2xl font-bold">
+                      {performer.amount} {performer.metric}
+                    </p>
+                    <p className="text-lg font-medium">{performer.award}</p>
+                    <div className="flex flex-col justify-center items-center">
+                      <p className="text-md text-gray-200">{performer.name}</p>
+                      <p className="text-sm text-gray-400">{performer.position}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
         {/* Right Component 1/3 */}
         <div className="w-1/3 flex flex-col h-full">
-          <p>Test</p>
+          {/* Team Profile */}
+          <div className="w-full flex flex-col gap-2">
+            <div className="px-2">
+              <h1 className="text-2xl font-bold">Profile</h1>
+            </div>
+            <div className="w-full h-full flex flex-col justify-center items-center bg-gray-700 rounded-2xl">
+              {/* Country and City */}
+              <div className="w-full flex flex-col gap-2 p-4 border-b border-gray-500">
+                <div className="flex flex-col">
+                  <div className="w-[20%]">
+                    <p className="text-sm text-gray-400">Country:</p>
+                  </div>
+                  <p className="text-sm">{teamProfile.country}</p>
+                </div>
+                <div className="flex flex-col">
+                  <div className="w-[20%]">
+                    <p className="text-sm text-gray-400">City:</p>
+                  </div>
+                  <p className="text-sm">{teamProfile.city}</p>
+                </div>
+              </div>
+              {/* Description */}
+              <div className="w-full flex flex-col gap-2 p-4 border-b border-gray-500">
+                <p className="text-sm text-gray-400">Description:</p>
+                <p className="text-sm text-justify">{teamProfile.description}</p>
+              </div>
+              {/* Links */}
+              <div className="w-full flex flex-col gap-2 p-4">
+                {teamProfile.instagram ? (
+                  <div className="flex flex-row gap-2 items-center">
+                    <Image src={Instagram} alt="instagram" height={10} />
+                    <Link href={teamProfile.instagram}>
+                      <p className="text-sm text-gray-300 hover:underline">Instagram</p>
+                    </Link>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {teamProfile.facebook ? (
+                  <div className="flex flex-row gap-2 items-center">
+                    <Image src={Facebook} alt="facebook" height={10} />
+                    <Link href={teamProfile.facebook}>
+                      <p className="text-sm text-gray-300 hover:underline">Facebook</p>
+                    </Link>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {teamProfile.tiktok ? (
+                  <div className="flex flex-row gap-2 items-center">
+                    <Image src={Tiktok} alt="tiktok" height={10} />
+                    <Link href={teamProfile.tiktok}>
+                      <p className="text-sm text-gray-300 hover:underline">Tiktok</p>
+                    </Link>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
