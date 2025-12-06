@@ -1,5 +1,6 @@
 "use client";
 
+// Imports
 // Components
 import LatestCompetitionLeagueTable from "./components/LatestCompetitionLeagueTable";
 import LatestCompetitionKnockoutRound from "./components/LatestCompetitionKnockoutRound";
@@ -40,6 +41,7 @@ import Facebook from "@/public/social_media_logos/facebook.svg";
 import Tiktok from "@/public/social_media_logos/tiktok.svg";
 import Link from "next/link";
 
+// MOCK DATA
 const teamList = [
   {
     id: "1",
