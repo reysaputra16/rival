@@ -1255,15 +1255,14 @@ const TeamPage = () => {
       {/* Header and Banner */}
       <div className="relative w-full max-w-7xl h-[250px]">
         {/* Upper Background */}
-        <div className="absolute w-full h-[50%] bg-blue-300 opacity-60 rounded-t-3xl" />
+        <div className="absolute w-full h-[50%] bg-[#78b1da] opacity-60 rounded-t-3xl" />
         {/* Team Logo */}
         <div className="absolute w-full h-full flex items-center pl-15 gap-5">
           <Image
             src={ManchesterCity}
             alt="team-photo"
-            width={150}
             height={150}
-            className="rounded-full object-contain"
+            className="rounded-full object-contain p-2 bg-white"
           />
         </div>
         {/* Team Name */}
