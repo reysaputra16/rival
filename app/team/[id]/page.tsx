@@ -1090,7 +1090,7 @@ const MatchesPage = () => {
                     <div className="w-1/4 flex justify-center items-center border-r border-gray-500">
                       {result.status === "Finished" ? <p className="text-sm">FT</p> : ""}
                     </div>
-                    <div className="w-full flex flex-col gap-2 p-4">
+                    <div className="w-full flex flex-col gap-4 p-4">
                       <div className="flex flex-row gap-3 items-center">
                         <div className="w-[5%]">
                           <p
@@ -1146,7 +1146,7 @@ const MatchesPage = () => {
                           ""
                         )}
                       </div>
-                      <div className="w-full flex flex-col gap-2 p-4">
+                      <div className="w-full flex flex-col gap-6 p-4">
                         <div className="flex flex-row gap-3 items-center">
                           <div className="w-[10%] flex justify-center">
                             <Image src={upcoming.homeLogo} alt="home-team" height={20} />
@@ -1176,7 +1176,7 @@ const MatchesPage = () => {
           <h1 className="text-2xl font-bold">Live</h1>
         </div>
 
-        <div className="w-full flex flex-col bg-gray-700 rounded-2xl mt-1 border-2">
+        <div className="w-full flex flex-col bg-gray-700 rounded-2xl mt-1.5">
           {/* Date and Competition */}
           <div className="flex flex-row justify-between items-center p-4 bg-gray-500 rounded-t-2xl">
             <p className="text-xs">{live.matchInfo.date}</p>
@@ -1203,7 +1203,7 @@ const MatchesPage = () => {
                 ""
               )}
             </div>
-            <div className="w-full flex flex-col gap-2 p-4">
+            <div className="w-full flex flex-col gap-4 p-4">
               <div className="flex flex-row gap-3 items-center">
                 <div className="w-[5%]">
                   <p
@@ -1249,7 +1249,7 @@ const TeamPage = () => {
   const team = teamList.find((team) => team.id === id);
 
   // States
-  const [currentSelection, setCurrentSelection] = useState("Videos");
+  const [currentSelection, setCurrentSelection] = useState("Matches");
   return (
     <div className="w-full flex flex-col items-center pt-5 mt-5">
       {/* Header and Banner */}
