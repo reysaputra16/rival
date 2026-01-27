@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto, TikTok_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Provider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const roboto = Roboto({
-  weight: "300",
+const montserrat = Montserrat({
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -21,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.className}>
-      <body>
+    <html lang="en">
+      <body className={montserrat.className}>
         <Providers>
-          <div className="w-full flex flex-col items-center bg-gray-900 min-h-screen">
+          <div className="w-full h-full min-h-screen flex flex-col items-center dark:bg-black bg-zinc-200">
             <Navbar />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Providers>
       </body>

@@ -6,42 +6,40 @@ const LatestCompetitionLeagueTableTeamEntry = (
 ) => {
   return (
     <div
-      className={`w-full flex flex-row justify-center items-center p-2 ${!entry.grayedOut ? "rounded-2xl bg-gray-800 border-2" : ""}`}
+      className={`w-full flex flex-row justify-center items-center p-2 ${!entry.grayedOut ? "rounded-2xl dark:bg-zinc-900 bg-zinc-200 border-2" : ""}`}
     >
       <div className="w-[5%] flex justify-center items-center">
-        <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>{entry.team.position}</p>
+        <p className={`text-sm`}>{entry.team.position}</p>
       </div>
       <div className="w-[55%] flex items-center px-2">
         <div className="flex flex-row gap-2">
           <Image src={entry.team.img} alt="team-logo" height={20} className="object-contain" />
-          <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>{entry.team.name}</p>
+          <p className={`text-sm`}>{entry.team.name}</p>
         </div>
       </div>
       <div className="w-[35%] flex justify-center items-center gap-5 px-4">
         <div className="w-1/5 flex justify-center items-center">
-          <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>
-            {entry.team.gamesPlayed}
-          </p>
+          <p className={`text-sm`}>{entry.team.gamesPlayed}</p>
         </div>
 
         <div className="w-1/5 flex justify-center items-center">
-          <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>{entry.team.wins}</p>
+          <p className={`text-sm`}>{entry.team.wins}</p>
         </div>
         <div className="w-1/5 flex justify-center items-center">
-          <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>{entry.team.draws}</p>
+          <p className={`text-sm`}>{entry.team.draws}</p>
         </div>
         <div className="w-1/5 flex justify-center items-center">
-          <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>{entry.team.losses}</p>
+          <p className={`text-sm`}>{entry.team.losses}</p>
         </div>
         <div className="w-1/5 flex justify-center items-center">
-          <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>
+          <p className={`text-sm`}>
             {entry.team.goalDiff >= 0 ? "+" : ""}
             {entry.team.goalDiff}
           </p>
         </div>
       </div>
       <div className="w-[5%] flex justify-center items-center">
-        <p className={`text-sm ${entry.grayedOut ? "text-gray-400" : ""}`}>{entry.team.points}</p>
+        <p className={`text-sm`}>{entry.team.points}</p>
       </div>
     </div>
   );
@@ -58,7 +56,7 @@ const LatestCompetitionLeagueTable = (competitionLeague: CompetitionStageLeagueT
       {/* League Table Header */}
       <div className="w-full flex flex-col">
         {/* Header */}
-        <div className="w-full flex flex-row justify-center items-center bg-gray-500 rounded-t-2xl p-2">
+        <div className="w-full flex flex-row justify-center items-center dark:bg-zinc-900 bg-zinc-200 rounded-t-2xl p-2">
           <div className="w-[60%] flex justify-center items-center">
             <p className="text-sm">Team</p>
           </div>

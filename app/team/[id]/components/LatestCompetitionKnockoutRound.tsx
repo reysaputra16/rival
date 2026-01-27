@@ -24,7 +24,7 @@ const LatestCompetitionKnockoutRound = (info: CompetitionStageKnockoutRoundProps
             />
           </div>
           <div className="w-1/5 flex justify-center">
-            <div className="bg-gray-800 p-2 rounded-2xl">
+            <div className="dark:bg-zinc-900 bg-zinc-200 p-2 rounded-2xl">
               <p className="text-xl">
                 {info.matchInfo.status === "Not Started"
                   ? info.matchInfo.time
@@ -57,11 +57,11 @@ const LatestCompetitionKnockoutRound = (info: CompetitionStageKnockoutRoundProps
         <div className="w-full flex flex-row justify-center items-center gap-5">
           <div className="flex flex-row items-center gap-2">
             <Calendar size={15} className="text-gray-500" />
-            <p className="text-xs text-gray-300">{info.matchInfo.date}</p>
+            <p className="text-xs">{info.matchInfo.date}</p>
           </div>
           <div className="flex flex-row items-center gap-2">
             <MapPin size={15} className="text-gray-500" />
-            <p className="text-xs text-gray-300">{info.matchInfo.location}</p>
+            <p className="text-xs">{info.matchInfo.location}</p>
           </div>
         </div>
       </div>
