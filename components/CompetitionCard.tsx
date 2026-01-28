@@ -85,9 +85,9 @@ const LeaguePhase = () => {
       {/* Stage Name */}
       <p className="text-sm font-medium">League Phase</p>
       {/* Table position */}
-      <div className="w-full flex flex-col shadow-lg rounded-lg">
+      <div className="w-full flex flex-col shadow-sm dark:shadow-border-main-dark rounded-lg">
         {/* Position header */}
-        <div className="w-full flex flex-row dark:bg-zinc-800 bg-zinc-100 py-1 rounded-t-lg">
+        <div className="w-full flex flex-row dark:bg-primary-dark bg-primary py-1 rounded-t-lg">
           {/* Filler for team name */}
           <div className="w-[80%]" />
           <div className="w-[10%] flex justify-center items-center">
@@ -102,7 +102,7 @@ const LeaguePhase = () => {
           {looperList.map((loop, index) => (
             <div
               key={index}
-              className={`w-full flex flex-row ${loop === 1 ? "dark:bg-zinc-800 bg-zinc-100 rounded-md" : ""} py-1`}
+              className={`w-full flex flex-row ${loop === 1 ? "dark:bg-primary-dark bg-primary rounded-md" : ""} py-1`}
             >
               {/* Position and team name */}
               <div className="w-[80%] flex flex-row">
