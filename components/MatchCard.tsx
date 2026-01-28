@@ -4,6 +4,7 @@ import Image from "next/image";
 import PremierLeague from "@/public/football_logos/premier-league.svg";
 import ManchesterCity from "@/public/football_logos/manchester-city.svg";
 import Arsenal from "@/public/football_logos/arsenal.svg";
+import { MoveRight } from "lucide-react";
 
 const MatchCard = (matchInfo: MatchCardProps) => {
   return (
@@ -92,6 +93,11 @@ const MatchCard = (matchInfo: MatchCardProps) => {
             </>
           )}
         </div>
+      </div>
+      {/* Match Info */}
+      <div className="flex flex-row items-center gap-2 p-2 dark:text-zinc-500 text-zinc-400 hover:text-text-main hover:dark:text-text-main-dark cursor-pointer transition-all duration-300">
+        <MoveRight width={15} />
+        <p className="text-xs">Match Details</p>
       </div>
     </div>
   );
