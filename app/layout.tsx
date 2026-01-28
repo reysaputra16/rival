@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <Providers>
-          <div className="w-full h-full min-h-screen flex flex-col items-center dark:bg-black bg-zinc-200">
+          <div className="w-full h-full min-h-screen flex flex-col items-center bg-primary dark:bg-primary-dark">
             <Navbar />
             {children}
             {/* <Footer /> */}

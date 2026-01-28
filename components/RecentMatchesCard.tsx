@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const RecentMatchesCard = (recentMatches: RecentMatchWrapper) => {
   return (
-    <div className="w-full flex flex-row gap-5 p-6 rounded-lg shadow-md dark:shadow-zinc-600 dark:bg-zinc-700 bg-white justify-between items-center">
+    <div className="w-full flex flex-row gap-5 p-6 rounded-lg shadow-sm dark:shadow-border-main-dark dark:bg-secondary-dark bg-secondary justify-between items-center">
       {recentMatches.matches.map((match, index) => (
         <div
           key={index}
@@ -14,7 +14,7 @@ const RecentMatchesCard = (recentMatches: RecentMatchWrapper) => {
             {match.homeScore} - {match.awayScore}
           </p>
           <Image src={match.awayLogo} alt="away-logo" height={25} className="object-contain" />
-          <div className="absolute top-12 px-4 dark:bg-zinc-700 bg-white">
+          <div className="absolute top-12 px-4 dark:bg-secondary-dark bg-secondary">
             <p
               className={`${match.outcome === "W" ? "text-green-500" : match.outcome === "D" ? "text-gray-500" : match.outcome === "L" ? "text-red-500" : ""} font-medium text-md`}
             >

@@ -7,7 +7,7 @@ import Facebook from "@/public/social_media_logos/facebook.svg";
 
 const TeamProfileCard = () => {
   return (
-    <div className="w-full flex flex-col rounded-lg shadow-md dark:shadow-zinc-600 dark:bg-zinc-700 bg-white text-sm p-4 gap-3">
+    <div className="w-full flex flex-col rounded-lg shadow-sm dark:shadow-border-main-dark dark:bg-secondary-dark bg-secondary text-sm p-4 gap-3">
       <div className="flex flex-col gap-1">
         <p className="text-xs font-light">Country</p>
         <div className="flex flex-row items-center gap-2">

@@ -7,10 +7,10 @@ import Arsenal from "@/public/football_logos/arsenal.svg";
 
 const MatchCard = (matchInfo: MatchCardProps) => {
   return (
-    <div className="w-full flex flex-col rounded-lg shadow-md dark:shadow-zinc-500 dark:bg-zinc-700 bg-white text-sm">
+    <div className="w-full flex flex-col rounded-lg shadow-sm dark:shadow-border-main-dark dark:bg-secondary-dark bg-secondary text-sm">
       {/* Competition Name and Logo */}
       {matchInfo.competitionName && matchInfo.competitionLogo ? (
-        <div className="flex flex-row gap-2 border-b dark:border-zinc-800 border-zinc-100 p-4">
+        <div className="flex flex-row gap-2 border-b dark:border-border-main-dark border-border-main p-4">
           <Image src={matchInfo.competitionLogo} alt="comp-logo" height={20} />
           <div className="flex items-center">
             <p className="text-xs font-extralight">{matchInfo.competitionName}</p>

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const Navbar = () => {
   const [searchText, setSearchText] = useState("");
   return (
-    <nav className="w-full flex flex-row max-w-7xl p-4 justify-between gap-4 items-center">
+    <nav className="w-full flex flex-row max-w-7xl p-4 justify-between gap-4 items-center dark:text-text-main-dark dark:border-border-main-dark">
       {/* Logo */}
       <div className="flex px-6">
         <h1 className="text-2xl font-bold">RIVAL</h1>

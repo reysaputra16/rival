@@ -739,8 +739,11 @@ const SquadPage = () => {
           </div>
           {players.map((player, index) =>
             player.position === type ? (
-              <div key={index} className="w-full flex flex-col p-4 rounded-2xl bg-white gap-3">
-                <div className="flex flex-row text-sm text-gray-400">
+              <div
+                key={index}
+                className="w-full flex flex-col p-4 rounded-2xl shadow-sm dark:shadow-border-main-dark dark:bg-secondary-dark bg-secondary gap-3"
+              >
+                <div className="flex flex-row text-sm text-text-main dark:text-text-main-dark">
                   <div className="w-[40%]">
                     <p>Player</p>
                   </div>
@@ -759,7 +762,7 @@ const SquadPage = () => {
                 </div>
                 <div className="flex flex-row text-sm">
                   <div className="w-[40%] flex flex-row gap-3 items-center">
-                    <div className="border-2 rounded-lg border-zinc-200 mr-2">
+                    <div className="border-2 rounded-lg border-border-main dark:border-border-main-dark mr-2">
                       <Image src={player.img} alt="player" height={60} className="rounded-lg" />
                     </div>
 
@@ -801,7 +804,7 @@ const MatchesPage = () => {
           {matchPageStates.map((state, index) => (
             <div
               key={index}
-              className={`py-2 px-4 border rounded-2xl border-gray-700 ${matchPageState === state ? "bg-black text-white" : "hover:bg-black hover:text-white transition-all duration-300"}`}
+              className={`py-2 px-4 border rounded-2xl border-border-main dark:border-border-main-dark ${matchPageState === state ? "dark:bg-white dark:text-black bg-black text-white" : "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300"}`}
               onClick={() => setMatchPageState(state)}
             >
               <p className="text-sm">{state}</p>
@@ -837,11 +840,11 @@ const TeamPage = () => {
   // States
   const [currentSelection, setCurrentSelection] = useState("Overview");
   return (
-    <div className="w-full flex flex-col items-center pt-5 mt-5">
+    <div className="w-full flex flex-col items-center pt-5 mt-5 dark:text-text-main-dark dark:border-border-main-dark">
       {/* Header and Banner */}
       <div className="relative w-full max-w-7xl h-[250px]">
         {/* Upper Background */}
-        <div className="absolute w-full h-[50%] dark:bg-zinc-800 bg-white rounded-t-2xl" />
+        <div className="absolute w-full h-[50%] dark:bg-secondary-dark bg-secondary rounded-t-2xl" />
 
         {/* Team Logo */}
         <div className="absolute w-full h-full flex items-center pl-15 gap-5">
@@ -849,7 +852,7 @@ const TeamPage = () => {
             src={ManchesterCity}
             alt="team-photo"
             height={150}
-            className="rounded-full object-contain p-2 dark:bg-zinc-800 bg-white"
+            className="rounded-full object-contain p-2 dark:bg-secondary-dark bg-secondary"
           />
         </div>
         {/* Team Name */}

@@ -144,7 +144,7 @@ const CompetitionCard = () => {
   const [currentPhase, setCurrentPhase] = useState(4);
 
   return (
-    <div className="w-full min-h-[280px] flex flex-col rounded-lg shadow-md dark:bg-zinc-700 bg-white">
+    <div className="w-full min-h-[280px] flex flex-col rounded-lg shadow-sm dark:shadow-border-main-dark dark:bg-secondary-dark bg-secondary">
       {/* Competition Name and Logo */}
       <div className="flex flex-row gap-2 border-b dark:border-zinc-800 border-zinc-100 p-4">
         <Image src={ChampionsLeague} alt="comp-logo" height={20} />
@@ -158,7 +158,7 @@ const CompetitionCard = () => {
         <div className="w-[10%] flex justify-center items-center">
           {currentPhase > 0 ? (
             <ArrowLeft
-              className="border rounded-full p-0.5 dark:border-zinc-900 border-zinc-400 dark:text-zinc-900 text-zinc-400 transition-all duration-300 hover:border-black hover:text-black hover:dark:border-white hover:dark:text-white cursor-pointer"
+              className="border rounded-full p-0.5 dark:border-border-main-dark border-border-main dark:text-text-main-dark text-text-main transition-all duration-300 hover:border-black hover:text-black hover:dark:border-white hover:dark:text-white cursor-pointer"
               size={20}
               onClick={() => (currentPhase > 0 ? setCurrentPhase(currentPhase - 1) : "")}
             />
@@ -188,7 +188,7 @@ const CompetitionCard = () => {
         <div className="w-[10%] flex justify-center items-center">
           {currentPhase < 4 ? (
             <ArrowRight
-              className="border rounded-full p-0.5 dark:border-zinc-900 border-zinc-400 dark:text-zinc-900 text-zinc-400 transition-all duration-300 hover:border-black hover:text-black hover:dark:border-white hover:dark:text-white cursor-pointer"
+              className="border rounded-full p-0.5 dark:border-border-main-dark border-border-main dark:text-text-main-dark text-text-main transition-all duration-300 hover:border-black hover:text-black hover:dark:border-white hover:dark:text-white cursor-pointer"
               size={20}
               onClick={() => setCurrentPhase(currentPhase < 4 ? currentPhase + 1 : currentPhase)}
             />
